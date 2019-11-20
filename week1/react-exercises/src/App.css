@@ -1,0 +1,80 @@
+body {
+  padding: 0;
+  margin: 0 auto;
+  width: 80%;
+  font-size: 14px;
+}
+
+.hobbies-container {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #c4c4c4;
+  margin-bottom: 40px;
+}
+
+.title {
+  padding: 10px 10px 0 10px;
+}
+
+.hobbies {
+  padding: 0 10px 10px 10px;
+  list-style-type: none;
+  line-height: 1.5em;
+}
+
+.guarantee-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  border-bottom: 1px solid #c4c4c4;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
+
+.guarantee {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  text-align: center;
+}
+
+.guarantee-image {
+  place-self: center;
+}
+
+.guarantee-descriptions {
+  color: #4d4d4d;
+}
+
+.counter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  grid-gap: 5px;
+  width: 50%;
+}
+.counter-feedback {
+  align-self: center;
+  justify-content: flex-start;
+}
+
+.counter-btn {
+  background-color: #c7c7c7;
+  color: #000000;
+  font-size: 14px;
+  font-weight: bolder;
+  border: none;
+  padding: 10px 32px;
+  margin: 10px 2px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    width: 90%;
+  }
+  .guarantee-container {
+    grid-template-columns: 1fr;
+  }
+  .counter-container {
+    width: 100%;
+  }
+}
