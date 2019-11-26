@@ -5,9 +5,8 @@
 
 body {
   margin: 0 auto;
-  width: 50vw;
+  width: 35vw;
   line-height: 1.2;
-  font-size: 14px;
 }
 
 .app-title {
@@ -19,19 +18,29 @@ body {
   grid-template-columns: 1fr;
   grid-gap: 20px;
 }
+
 .single-card-container {
   border: 1px solid #707070;
-  list-style-type: none;
   padding: 15px 25px;
 }
 
-.city-name {
-  font-size: 1.5em;
+h2 {
   font-weight: 500;
 }
 
+p {
+  font-size: 12px;
+}
+
+.forecast-div {
+  margin-top: 10px;
+}
+
 .highlighted-info {
-  margin: 5px 0 20px 0;
+  margin: 15px 0 0 0;
+  list-style-type: none;
+  line-height: 1.5;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 600px) {
