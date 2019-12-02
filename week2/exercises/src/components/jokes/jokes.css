@@ -1,0 +1,10 @@
+h2 {
+  text-align: center;
+}
+
+.main-container {
+  width: 60vw;
+  border: 1px solid black;
+  text-align: center;
+  margin: 5vh auto;
+}

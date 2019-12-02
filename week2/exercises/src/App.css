@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 10px;
+}
+
+body {
+  margin: 10vh auto;
+  width: 90%;
+}
+
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+}

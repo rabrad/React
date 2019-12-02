@@ -1,0 +1,16 @@
+.dogs-main-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+img {
+  justify-self: center;
+  max-width: 250px;
+}
