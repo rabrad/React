@@ -17,7 +17,7 @@ function CityCard(props) {
           lon={props.lon}
         />
       </div>
-      <div className="card-right" onClick={() => props.handelCardRemove(props.id)}>
+      <div className="card-right" onClick={() => props.handleRemoveClick(props.id)}>
         <HighlightOffIcon />
       </div>
     </div>

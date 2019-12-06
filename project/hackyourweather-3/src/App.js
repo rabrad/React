@@ -18,7 +18,6 @@ function App() {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       );
-
       if (!res.ok) {
         throw new Error();
       }
@@ -27,12 +26,12 @@ function App() {
 
       const addCity =
         cities.filter(city => city.id === newCity.id).length === 0 || cities.length === 0;
-      console.log('Add city', addCity); // log true
+      console.log('Add city', addCity);
 
       if (addCity) {
         setCities([newCity, ...cities]);
+        console.log([newCity, ...cities]);
       }
-
       setStatus('success');
     } catch (err) {
       if (err) {
@@ -43,7 +42,8 @@ function App() {
   };
 
   function removeCityCard(id) {
-    setCities(cities.filter(city => city.id === !id));
+    setCities(cities.filter(city => city.id !== id));
+    console.log('REMOVE:', cities);
   }
 
   return (
@@ -53,14 +53,13 @@ function App() {
       <Form onSubmit={city => fetchWeather(city)} />
       {Object.entries(cities).length === 0 && (
         <p>
-          Get weather information for any city. <br />
-          <strong>Start by typing the city name</strong>
+          Get weather information for any city. <em> Start by typing the city name</em>
         </p>
       )}
 
-      {status === 'success' && <CardList cards={cities} onCardRemove={removeCityCard} />}
+      {status === 'success' && <CardList cards={cities} onRemove={removeCityCard} />}
 
-      {status === 'error' && <p>{hasError} The city name is not correct.</p>}
+      {status === 'error' && <p>{hasError} The city name is not correct. please try again. </p>}
     </div>
   );
 }

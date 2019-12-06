@@ -7,7 +7,7 @@ function CardList(props) {
       {props.cards.map(card => (
         <li key={'city_card_' + card.id}>
           <CityCard
-            handelCardRemove={props.onCardRemove}
+            handleRemoveClick={props.onRemove}
             id={card.id}
             cityName={card.name}
             countryCode={card.country}
