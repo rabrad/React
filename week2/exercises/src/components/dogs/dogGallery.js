@@ -8,7 +8,7 @@ const DOG_API = `https://dog.ceo/api/breeds/image/random`;
 function DogGallery() {
   const [dogPhotos, setDogPhotos] = useState([]);
   const [status, setStatus] = useState('loading');
-  const [hasError, setHasError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const getDogPhoto = async () => {
     try {
@@ -20,7 +20,7 @@ function DogGallery() {
       setStatus('success');
     } catch (err) {
       if (err) {
-        setHasError(err.message);
+        setErrorMessage(errorMessage);
         setStatus('error');
       }
     }
@@ -38,12 +38,12 @@ function DogGallery() {
 
       {status === 'loading' && <h3>Press the Button to find the best dog!</h3>}
 
-      <section className="gallery-container">
+      <div className="gallery-container">
         {status === 'success' &&
           dogPhotos.map(photo => <DogPhoto dogPhoto={photo} key={Math.random()} />)}
-        {status === 'error' && { hasError }}
-        <img src={dogPhotos.message} alt="" className="dog-image" />
-      </section>
+      </div>
+
+      {status === 'error' && <h2>{errorMessage || 'Error fetching dogs data'}</h2>}
     </div>
   );
 }

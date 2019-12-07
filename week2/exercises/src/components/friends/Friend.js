@@ -5,7 +5,7 @@ import './friends.css';
 
 function Friend() {
   const [friend, setFriend] = useState({});
-  const [status, setStatus] = useState(false);
+  const [statusOkay, setStatusOkay] = useState(false);
   const [hasError, setHasError] = useState('');
 
   const getFriend = async () => {
@@ -16,10 +16,10 @@ function Friend() {
 
       console.log('DATA:', newData);
       setFriend(newData);
-      setStatus(true);
+      setStatusOkay(true);
     } catch (err) {
       setHasError(err.message);
-      setStatus('error');
+      setStatusOkay('error');
     }
   };
 
@@ -31,8 +31,8 @@ function Friend() {
     <section className="fiends-container">
       <Button fetchData={() => getFriend()} text="Get a friend!" />
 
-      {status === 'error' && <div>{hasError}</div>}
-      {status === true && (
+      {statusOkay === 'error' && <div>{hasError}</div>}
+      {statusOkay === true && (
         <FriendProfile
           first={friend.name.first}
           last={friend.name.last}

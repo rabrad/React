@@ -3,12 +3,11 @@ import AppTitle from './components/AppTitle';
 import CityCard from './components/CityCard';
 import Form from './components/Form';
 import './App.css';
-require('dotenv').config();
 
 function App() {
   const [weatherInfo, setWeatherInfo] = useState({});
   const [status, setStatus] = useState('loading');
-  const [hasError, setHasError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fetchWeather = async city => {
     try {
@@ -16,7 +15,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       );
       if (!res.ok) {
-        throw new Error();
+        throw new Error('Oops! The city name is not correct. Please try again');
       }
       const weatherData = await res.json();
       console.log('DATA...>>>', weatherData);
@@ -25,7 +24,7 @@ function App() {
     } catch (err) {
       if (err) {
         setStatus('error');
-        setHasError(err.message);
+        setErrorMessage(err.message);
       }
     }
   };
@@ -35,8 +34,8 @@ function App() {
       <AppTitle title="Hack Your Weather" />
 
       <Form onSubmit={city => fetchWeather(city)} />
-      {Object.entries(weatherInfo).length === 0 && <p>Start by typing a city name </p>}
-
+      {/* {Object.entries(weatherInfo).length === 0 && <p>Start by typing a city name </p>} */}
+      {!weatherInfo.name && <p>Start by typing a city name </p>}
       {status === 'success' && (
         <CityCard
           cityName={weatherInfo.name}
@@ -50,7 +49,9 @@ function App() {
         />
       )}
 
-      {status === 'error' && <p>{hasError} The city name is not correct. please try again. </p>}
+      {status === 'error' && (
+        <p>{errorMessage || 'The city name is not correct. please try again.'} </p>
+      )}
     </div>
   );
 }
