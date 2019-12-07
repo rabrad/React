@@ -7,7 +7,7 @@ require('dotenv').config();
 
 function App() {
   const [status, setStatus] = useState('loading');
-  const [hasError, setHasError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [cities, setCities] = useState([]);
 
   const fetchWeather = async city => {
@@ -19,7 +19,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       );
       if (!res.ok) {
-        throw new Error();
+        throw new Error('Oops! The city name is not correct. Please try again');
       }
       const newCity = await res.json();
       console.log('DATA:', newCity);
@@ -36,7 +36,7 @@ function App() {
     } catch (err) {
       if (err) {
         setStatus('error');
-        setHasError(err.message);
+        setErrorMessage(err.message);
       }
     }
   };
@@ -51,15 +51,13 @@ function App() {
       <AppTitle title="Hack Your Weather" />
 
       <Form onSubmit={city => fetchWeather(city)} />
-      {Object.entries(cities).length === 0 && (
-        <p>
-          Get weather information for any city. <em> Start by typing the city name</em>
-        </p>
-      )}
+      {Object.entries(cities).length === 0 && <p>Get weather information for any city.</p>}
 
       {status === 'success' && <CardList cards={cities} onRemove={removeCityCard} />}
 
-      {status === 'error' && <p>{hasError} The city name is not correct. please try again. </p>}
+      {status === 'error' && (
+        <p>{errorMessage || 'The city name is not correct. please try again.'} </p>
+      )}
     </div>
   );
 }
