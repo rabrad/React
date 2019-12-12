@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  font-size: 14px;
+  background-image: linear-gradient(to top, #fff1eb 0%, #b4d2e0 100%);
+  min-height: 100vh;
+}
+
+.half-width {
+  margin: 0 auto;
+  width: 40vw;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+p {
+  font-size: 14px;
+}
+
+.app-title {
+  margin: 30px 0 0 0;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+}
+
+.input-area {
+  border: 1px solid #ffffff;
+  padding: 5px 15px;
+}
+
+.btn {
+  font-size: 1em;
+  padding: 5px 0;
+  background-color: #fff1eb;
+  border: 1px solid #fff1eb;
+}
+
+.single-card-container {
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  list-style-type: none;
+  background-color: #fff;
+  padding: 15px 25px;
+}
+
+.city-name {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.forecast-div {
+  margin: 15px 0;
+}
+
+.highlighted-info {
+  margin: 15px 0 0 0;
+  list-style-type: none;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  list-style-type: none;
+}
+
+.chart-container {
+  width: 80vw;
+  margin: 5vh auto;
+}
+
+.chart-header,
+.city-page-title {
+  margin: 20px 0;
+  font-weight: 200;
+  color: #000000;
+}
+
+.chart {
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #b4b4b4;
+}
+
+.area-chart {
+  height: 250px;
+}
+
+@media screen and (max-width: 600px) {
+  .half-width {
+    width: 90vw;
+  }
+
+  .chart-container {
+    width: 90vw;
+  }
+}
