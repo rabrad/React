@@ -31,8 +31,6 @@ function City() {
       }
       const data = await res.json();
       const { list } = data;
-      console.log('LIST:===================', list);
-      console.log('DATA:===================', data);
 
       setChartData(list);
       setHourlyForecast(data);
