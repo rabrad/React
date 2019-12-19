@@ -18,8 +18,7 @@ function App() {
       }
       const newCity = await res.json();
 
-      const addCity =
-        cities.filter(city => city.id === newCity.id).length === 0 || cities.length === 0;
+      const addCity = !cities.some(city => city.id === newCity.id) || cities.length === 0;
 
       if (addCity) {
         setCities([newCity, ...cities]);
@@ -44,10 +43,11 @@ function App() {
       <Form onSubmit={city => fetchWeather(city)} />
       {cities.length === 0 && <p>Get weather information for any city.</p>}
 
-      {status === 'success' && <CardList cards={cities} onRemove={removeCityCard} />}
       {status === 'error' && (
         <p>{errorMessage || 'The city name is not correct. please try again.'} </p>
       )}
+
+      <CardList cards={cities} onRemove={removeCityCard} />
     </div>
   );
 }

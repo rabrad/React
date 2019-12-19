@@ -50,9 +50,6 @@ function City() {
 
   useEffect(() => {
     fetchCityWeather();
-    return () => {
-      fetchCityWeather();
-    };
     // eslint-disable-next-line
   }, []);
 
